@@ -1,0 +1,31 @@
+html,body {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar{
+    flex: 2;
+    background-color: #151823;
+    border-right:1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.sidebar-elements{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main-area{
+    flex: 8;
+    background-color: #0F1117;
+    padding: 20px;
+}
