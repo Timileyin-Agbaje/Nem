@@ -1,0 +1,19 @@
+:root {
+ --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+/*DARK MODE*/
+    [data-theme="dark"]{
+    --primary-color: #0F1113;
+    --secondary-color: #1f2326;
+    --text-color: #BFC6CB;
+}
+/*LIGHT MODE*/
+    [data-theme="light"]{
+    --primary-color: #F7F7F9;
+    --secondary-color: #F0F2F5;
+    --text-color: #0F172A;
+    }
+}
+
+html{
+    font-family: var(--font-sans)
+}
