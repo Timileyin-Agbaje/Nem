@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc --noEmit",
-    "test": "tsx --test",
+    "test": "tsx --test test/policy.test.ts",
     "check": "npm run build && npm test"
   },
   "devDependencies": {
