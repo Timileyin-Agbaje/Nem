@@ -13,7 +13,7 @@ function makeGuardrail(): Guardrail {
   if (!baseUrl || !apiKey) {
     throw new Error("JEV_BASE_URL and JEV_API_KEY are required");
   }
-  return new Guardrail(new JevClient({ baseUrl, apiKey }), {
+  return new Guardrail(new JevClient({ baseUrl, apiKey, timeoutMs: Number(process.env.JEV_TIMEOUT_MS ?? 5000), maxRetries: Number(process.env.JEV_MAX_RETRIES ?? 2) }), {
     concurrency: Number(process.env.GUARDRAIL_CONCURRENCY ?? 5),
   });
 }

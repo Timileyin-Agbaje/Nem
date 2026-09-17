@@ -11,7 +11,8 @@
     "build": "tsc --noEmit",
     "test": "tsx --test",
     "check": "npm run build && npm test",
-    "cli": "tsx src/cli/main.ts"
+    "cli": "tsx src/cli/main.ts",
+    "smoke": "tsx src/cli/smoke.ts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

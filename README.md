@@ -47,6 +47,5 @@ guardrail cannot run. The evaluated action is never executed by this project.
 
 ## Live smoke test
 
-Live Jev calls are intentionally opt-in. A harmless smoke test will be added
-after the Jev schema is confirmed with TypeSafe. Do not place API keys in source
+Live Jev calls are intentionally opt-in. Run the harmless smoke test
 files, command arguments, or committed configuration.
