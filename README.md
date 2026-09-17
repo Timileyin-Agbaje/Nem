@@ -13,19 +13,22 @@ npm install
 npm run check
 ```
 
-TypeSafe is required for the Jev runtime schemas and public result types. Install
-and read the TypeSafe skill before extending those boundaries. The current
-offline implementation uses a narrow adapter validator until that prerequisite
-is available in the coding environment.
+TypeSafe is required for the Jev runtime schemas and public result types. The
+official `@typesafe-ai/sdk` is used for typed `systemOne` requests and Noul
+responses. Install dependencies before running the CLI; no API key is needed for
+offline tests.
 
 ## Configuration
 
 Set these variables only in the process environment or an ignored `.env` file:
 
 ```sh
-JEV_BASE_URL=https://your-jev-host
-JEV_API_KEY=your-key
+TYPESAFE_BASE_URL=https://api.typesafe.ai
+TYPESAFE_API_KEY=your-key
+# JEV_BASE_URL and JEV_API_KEY are supported aliases
 GUARDRAIL_CONCURRENCY=5
+JEV_TIMEOUT_MS=5000
+JEV_MAX_RETRIES=2
 ```
 
 `ALLOW` is a model- and policy-based signal, not authorization. Actions with
@@ -45,7 +48,7 @@ Human output includes the id, decision, and reason. `--json` emits typed result
 objects for automation. The CLI exits non-zero when a result is blocked or the
 guardrail cannot run. The evaluated action is never executed by this project.
 
-## Live smoke test
-
-Live Jev calls are intentionally opt-in. Run the harmless smoke test
-files, command arguments, or committed configuration.
+Run the harmless, evaluation-only smoke test after setting the explicit gate and
+credentials:
+```sh
+JEV_LIVE_SMOKE=1 npm run smoke

@@ -8,8 +8,8 @@ function usage(): string {
 }
 
 function makeGuardrail(): Guardrail {
-  const baseUrl = process.env.JEV_BASE_URL;
-  const apiKey = process.env.JEV_API_KEY;
+  const baseUrl = process.env.JEV_BASE_URL ?? process.env.TYPESAFE_BASE_URL ?? "https://api.typesafe.ai";
+  const apiKey = process.env.JEV_API_KEY ?? process.env.TYPESAFE_API_KEY;
   if (!baseUrl || !apiKey) {
     throw new Error("JEV_BASE_URL and JEV_API_KEY are required");
   }
