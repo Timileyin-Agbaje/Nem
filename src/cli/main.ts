@@ -2,18 +2,19 @@ import { demoActions } from "../demo/actions.js";
 import { Guardrail } from "../guardrail/guardrail.js";
 import { JevClient } from "../jev/client.js";
 import type { AgentAction } from "../domain/types.js";
+import { resolveJevConfig } from "../config.js";
 
 function usage(): string {
   return "Usage: npm run cli -- [--demo] [--action '<text>' [--id <id>]] [--json]";
 }
-
 function makeGuardrail(): Guardrail {
-  const baseUrl = process.env.JEV_BASE_URL ?? process.env.TYPESAFE_BASE_URL ?? "https://api.typesafe.ai";
-  const apiKey = process.env.JEV_API_KEY ?? process.env.TYPESAFE_API_KEY;
-  if (!baseUrl || !apiKey) {
-    throw new Error("JEV_BASE_URL and JEV_API_KEY are required");
-  }
-  return new Guardrail(new JevClient({ baseUrl, apiKey, timeoutMs: Number(process.env.JEV_TIMEOUT_MS ?? 5000), maxRetries: Number(process.env.JEV_MAX_RETRIES ?? 2) }), {
+  const { baseUrl, apiKey } = resolveJevConfig();
+  return new Guardrail(new JevClient({
+    baseUrl,
+    apiKey,
+    timeoutMs: Number(process.env.JEV_TIMEOUT_MS ?? 5000),
+    maxRetries: Number(process.env.JEV_MAX_RETRIES ?? 2),
+  }), {
     concurrency: Number(process.env.GUARDRAIL_CONCURRENCY ?? 5),
   });
 }
