@@ -13,6 +13,7 @@
     "test": "tsx --test",
     "check": "npm run build && npm test",
     "cli": "tsx src/cli/main.ts",
+    "demo": "tsx src/cli/demo.ts",
     "smoke": "tsx src/cli/smoke.ts",
     "build:web": "npm --prefix web install && npm --prefix web run build"
   },
