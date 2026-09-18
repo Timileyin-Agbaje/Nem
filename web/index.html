@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nem — agent action guardrail</title>
+    <meta
+      name="description"
+      content="nem is a fail-closed guardrail that evaluates agent actions as ALLOW, REVIEW, or BLOCK before they run."
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="kicker">nem · fail-closed guardrail</p>
+        <h1>Should this agent action run?</h1>
+        <p class="sub">
+          nem asks Jev for a Noul probability, applies the
+          <code>noul-v1</code> policy, and returns
+          <strong>ALLOW</strong>, <strong>REVIEW</strong>, or
+          <strong>BLOCK</strong>. It never executes the action.
+        </p>
+        <div class="thresholds">
+          <span><i class="dot allow"></i>ALLOW &lt; 0.20</span>
+          <span><i class="dot review"></i>REVIEW 0.20–0.80</span>
+          <span><i class="dot block"></i>BLOCK ≥ 0.80</span>
+        </div>
+      </header>
+
+      <main class="card">
+        <div class="row">
+          <label class="toggle">
+            <input type="checkbox" id="hosted-toggle" checked />
+            <span>Use hosted key (rate-limited demo)</span>
+          </label>
+        </div>
+        <div class="row" id="byok-row" hidden>
+          <input
+            type="password"
+            id="byok-input"
+            placeholder="Your JEV_API_KEY (BYOK — sent per request, never stored)"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="demos" id="demo-buttons"></div>
+
+        <form id="eval-form" class="form">
+          <input
+            type="text"
+            id="action-input"
+            maxlength="500"
+            placeholder="Try: Send an email to an external recipient"
+          />
+          <button type="submit" id="eval-button">Evaluate</button>
+        </form>
+
+        <div id="result" class="result" hidden></div>
+        <p class="hint">
+          Hosted demo: 10 req/min/IP, 500 chars max, single action per request.
+          Local installs bring their own key. ALLOW is a model signal, not
+          authorization.
+        </p>
+      </main>
+
+      <footer class="footer">
+        <a href="https://github.com/Timileyin-Agbaje/Nem">GitHub</a>
+        <span>·</span>
+        <span>npm run demo works offline, no key needed</span>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
