@@ -1,5 +1,24 @@
+# Dependencies
 node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
 dist/
+build/
+out/
+
+# Env
 .env
-.env.*
-!.env.example
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
